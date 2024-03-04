@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document5</title>
+    <link rel="stylesheet" href="extra gallery5.css">
+</head>
+<body>
+    <section aria-label="Newest photos" class="caro-section" id="gallery">
+        <div class="carousel" data-carousel>
+          <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>                          
+          <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
+        <div class="carousel-div">
+            <ul class="carousel-ul" data-slides>
+                <li class="slide" data-active>
+                  <img src="photos/pexels-05.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/flat-2.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/flat-3.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/brooke.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/edgar.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/christopher-campbell-rDEOVtE7vOs-unsplash.jpg" alt="nature" class+="carousel-image">
+                </li>
+                <li class="slide">
+                  <img src="photos/lum3n.jpg" alt="nature" class+="carousel-image">
+                </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+        <div class="foot">
+          <span><a href="#"></a>El'guapo <span id="date-time"></span>  &copy; All rights reserved.</span>
+        </div>
+
+        
+      <script>
+        var dt = new Date();
+        var yt = dt.getFullYear();
+        document.getElementById('date-time').innerHTML = yt;
+
+        const button = document.querySelectorAll("[data-carousel-button]")
+
+button.forEach(button => {
+    button.addEventListener("click", () => {
+        const offset = button.dataset.carouselButton === "next" ? 1 : -1
+        const slides = button
+        .closest("[data-carousel]")
+        .querySelector("[data-slides]")
+
+    const activeSlide = slides.querySelector("[data-active]")
+    let newIndex = [...slides.children].indexOf(activeSlide) + offset
+    if (newIndex < 0) newIndex = slides.children.length - 1
+    if (newIndex >= slides.children.length) newIndex = 0
+
+    slides.children[newIndex].dataset.active = true
+    delete activeSlide.dataset.active
+    })  
+});
+      </script>
+</body>
+</html>
